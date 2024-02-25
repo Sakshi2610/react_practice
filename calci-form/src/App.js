@@ -8,17 +8,39 @@ function App() {
     setNum(parseInt(e.target.value))
   }
 
-  const handlePlusOne = () => {
-    setNum(num + 1);
-  } 
-  const handlePlusTen = () => {
-    setNum(num + 10);
-  }
-  const handleMinusOne = () => {
-    setNum(num - 1);
-  }
-  const handleMinusTen = () => {
-    setNum(num - 10);
+  // const handlePlusOne = () => {
+  //   setNum(num + 1);
+  // } 
+  // const handlePlusTen = () => {
+  //   setNum(num + 10);
+  // }
+  // const handleMinusOne = () => {
+  //   setNum(num - 1);
+  // }
+  // const handleMinusTen = () => {
+  //   setNum(num - 10);
+  // }
+
+  const handleClick = (operator) => {
+    let temp = num
+
+      switch(operator) {
+        case "+1":
+          temp = temp + 1
+          break;
+        case "-1":
+          temp = temp - 1
+          break;
+        case "+10":
+          temp = temp + 10
+          break;
+        case "-10":
+          temp = temp - 10
+          break;
+        default: 
+          temp = num;
+    }
+    setNum(temp)
   }
   return(
     <div className='container'>
@@ -29,10 +51,10 @@ function App() {
           <input name='number' type='number' value={num} onChange={handleChange}/>
         </div>
 
-        <button className='btn-submit' onClick={handlePlusOne}>+1</button>
-        <button className='btn-submit' onClick={handleMinusOne}>-1</button>
-        <button className='btn-submit' onClick={handlePlusTen}>+10</button>
-        <button className='btn-submit' onClick={handleMinusTen}>-10</button>
+        <button className='btn-submit' onClick={() => handleClick("+1")}>+1</button>
+        <button className='btn-submit' onClick={() => handleClick("-1")}>-1</button>
+        <button className='btn-submit' onClick={() => handleClick("+10")}>+10</button>
+        <button className='btn-submit' onClick={() => handleClick("-10")}>-10</button>
       </div>
     </div>
   );
